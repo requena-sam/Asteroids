@@ -1,0 +1,23 @@
+{
+  "name": "asteroids",
+  "version": "1.0.0",
+  "description": "This implementation is a work in progress and is built to teach basic canvas concepts.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tecg-mmi/Asteroids.git"
+  },
+  "author": "Daniel <daniel.schreurs@hepl.be>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tecg-mmi/Asteroids/issues"
+  },
+  "homepage": "https://github.com/tecg-mmi/Asteroids#readme",
+  "devDependencies": {
+    "sass": "^1.72.0",
+    "vite": "^5.2.7"
+  }
+}
