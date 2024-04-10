@@ -5,7 +5,7 @@ export const settings = {
         id: 'game',
     },
     ship: {
-        color: Rgb.white,
+        //color: Rgb.white,
         width: 20,
         height: 40,
         speed: 0.2,
@@ -13,11 +13,13 @@ export const settings = {
         velocity: {x: 1, y: 2.5},
         leftRotation: -Math.PI / 15,
         right: Math.PI / 15,
+        color: Rgb.white,
+
     },
-    keys: ['ArrowUp',
-        'ArrowRight',
-        'ArrowLeft',
-        'ArrowDown',
+    keys: ['z',
+        'd',
+        'q',
+        's',
         ' '
     ],
     bullet: {
