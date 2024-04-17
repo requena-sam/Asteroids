@@ -9,9 +9,9 @@ export class Vector implements IPosition {
         this.y = position.y;
     }
 
-    add(vecteur: IPosition) {
-        this.x += vecteur.x;
-        this.y += vecteur.y;
+    add(vector: IPosition) {
+        this.x += vector.x;
+        this.y += vector.y;
     }
 
     multiply(scalar: number) {

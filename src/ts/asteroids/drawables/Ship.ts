@@ -10,7 +10,7 @@ export class Ship extends Triangle implements IAnimatable {
     private readonly canvas: HTMLCanvasElement;
     private keyController: KeyController;
     private readonly speed: Vector;
-    private bullets: Bullet[];
+    public bullets: Bullet[];
     private bulletCounter: number;
 
     constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, keyController: KeyController) {

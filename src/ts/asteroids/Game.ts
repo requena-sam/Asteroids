@@ -23,7 +23,7 @@ export class Game {
         this.animation = new Animate(this.canvas, this.ctx);
         this.animation.registerForAnimation(this.ship);
         for (let i = 0; i < settings.asteroid.initialAsteroidCount; i++) {
-            this.animation.registerForAnimation(new Asteroid(this.ctx, this.canvas));
+            this.animation.registerForAnimation(new Asteroid(this.ctx, this.canvas, this.ship, this.animation));
         }
         window.addEventListener('resize', () => {
                 this.resizeCanvas();
