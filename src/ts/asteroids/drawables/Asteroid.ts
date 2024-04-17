@@ -5,6 +5,7 @@ import {IColor} from "../../framework/types/IColor";
 import {Vector} from "../../framework/Vector";
 import {Random} from "../../framework/helpers/Random";
 import {settings} from "../settings";
+import {Collision} from "../../framework/helpers/Collision";
 
 export class Asteroid extends Rectangle implements IAnimatable {
     private path: Path2D;
@@ -32,7 +33,7 @@ export class Asteroid extends Rectangle implements IAnimatable {
         this.ctx.save();
         this.ctx.translate(this.position.x, this.position.y);
         this.ctx.rotate(this.orientation);
-        this.ctx.translate(-this.w / 2, -this.h / 2);
+        this.ctx.translate(-this.width / 2, -this.height / 2);
         this.ctx.strokeStyle = this.color.toString();
         this.ctx.stroke(this.path);
         this.ctx.restore();
@@ -44,22 +45,7 @@ export class Asteroid extends Rectangle implements IAnimatable {
     update(): void {
         (this.position as Vector).add(this.speed);
         this.orientation += settings.asteroid.orientationSpeed;
-        this.checkEdges();
-    }
-
-    checkEdges() {
-        if (this.position.y > this.canvas.height + settings.asteroid.height) {
-            this.position.y = -settings.asteroid.height;
-        }
-        if (this.position.y < -settings.asteroid.height) {
-            this.position.y = this.canvas.height + settings.asteroid.height;
-        }
-        if (this.position.x > this.canvas.width + settings.asteroid.width) {
-            this.position.x = -settings.asteroid.width;
-        }
-        if (this.position.x < -settings.asteroid.width) {
-            this.position.x = this.canvas.width + settings.asteroid.width;
-        }
+        Collision.checkEdges(this,this.canvas);
     }
 
 }
