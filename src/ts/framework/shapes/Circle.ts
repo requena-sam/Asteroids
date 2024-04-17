@@ -5,7 +5,7 @@ import {IPosition} from "../types/IPosition";
 export class Circle extends Shape {
     private readonly radius: number;
 
-    constructor(ctx: CanvasRenderingContext2D, position: IPosition, radius: number, color: IColor, degree:number, isFilled: boolean = true) {
+    constructor(ctx: CanvasRenderingContext2D, position: IPosition, radius: number, color: IColor, degree: number, isFilled: boolean = true) {
         super(ctx, position, color, degree, isFilled);
         this.radius = radius;
     }
@@ -22,9 +22,9 @@ export class Circle extends Shape {
         this.ctx.rotate(this.degree);
 
         if (this.isFilled) {
-            this.ctx.clearRect(- this.radius, - this.radius, this.radius * 2, this.radius * 2);
+            this.ctx.clearRect(-this.radius - 1, -this.radius - 1, this.radius * 2 + 2, this.radius * 2 + 2);
         } else {
-            this.ctx.clearRect((- this.radius) - 2, (- this.radius) - 2, this.radius * 2 + 4, this.radius * 2 + 4);
+            this.ctx.clearRect((-this.radius) - 2, (-this.radius) - 2, this.radius * 2 + 4, this.radius * 2 + 4);
         }
 
         this.ctx.restore();

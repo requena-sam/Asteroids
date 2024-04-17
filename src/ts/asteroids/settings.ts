@@ -14,6 +14,8 @@ export const settings = {
         leftRotation: -Math.PI / 15,
         rightRotation: Math.PI / 15,
         friction: 0.99,
+        bulletIntervall: 10
+
 
     },
     keys: [

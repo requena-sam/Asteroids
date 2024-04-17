@@ -10,6 +10,7 @@ export class Ship extends Triangle implements IAnimatable {
     private keyController: KeyController;
     private readonly speed: Vector;
     private bullets: Bullet[];
+    private bulletCounter: number;
 
     constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, keyController: KeyController) {
         super(
@@ -25,6 +26,7 @@ export class Ship extends Triangle implements IAnimatable {
             false
         );
         this.bullets = [];
+        this.bulletCounter = 0;
         this.canvas = canvas;
         this.keyController = keyController;
         this.degree = 0;
@@ -72,7 +74,11 @@ export class Ship extends Triangle implements IAnimatable {
                     this.speed.multiply(settings.ship.friction);
                     break;
                 case settings.keys[4]:
-                    this.bullets.push(new Bullet(this.ctx, this.position, this.degree, this.speed));
+                    this.bulletCounter++;
+                    if (this.bulletCounter > settings.ship.bulletIntervall) {
+                        this.bulletCounter = 0
+                        this.bullets.push(new Bullet(this.ctx, this.position, this.degree, this.speed));
+                    }
                     break;
             }
         });
