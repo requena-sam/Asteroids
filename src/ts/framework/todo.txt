@@ -1,0 +1,3 @@
+TODO
+- Gérer le clear du stroke d'une shape si on augmente la largeur
+- Ajouter la methode stop dans animation
