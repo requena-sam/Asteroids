@@ -53,6 +53,8 @@ export const settings = {
         initialAsteroidCount: 4,
         minAcceleration: 2,
         maxAcceleration: 5,
+        orientationSpeed: 0.01,
+
 
     }
 }

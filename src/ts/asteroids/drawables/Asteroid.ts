@@ -10,6 +10,7 @@ export class Asteroid extends Rectangle implements IAnimatable {
     private path: Path2D;
     private speed: Vector;
     private acceleration: Vector;
+    private canvas: HTMLCanvasElement;
 
     constructor(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
         super(ctx, new Vector({
@@ -24,12 +25,14 @@ export class Asteroid extends Rectangle implements IAnimatable {
         this.speed = new Vector({x: 0, y: 0});
         this.acceleration = Vector.fromAngle(this.orientation, Random.int(settings.asteroid.minAcceleration, settings.asteroid.maxAcceleration));
         this.speed.add(this.acceleration);
+        this.canvas = canvas;
     }
 
     draw() {
         this.ctx.save();
-        this.ctx.translate(this.position.x + this.w / 2, this.position.y + this.h / 2);
+        this.ctx.translate(this.position.x, this.position.y);
         this.ctx.rotate(this.orientation);
+        this.ctx.translate(-this.w / 2, -this.h / 2);
         this.ctx.strokeStyle = this.color.toString();
         this.ctx.stroke(this.path);
         this.ctx.restore();
@@ -40,6 +43,23 @@ export class Asteroid extends Rectangle implements IAnimatable {
 
     update(): void {
         (this.position as Vector).add(this.speed);
+        this.orientation += settings.asteroid.orientationSpeed;
+        this.checkEdges();
+    }
+
+    checkEdges() {
+        if (this.position.y > this.canvas.height + settings.asteroid.height) {
+            this.position.y = -settings.asteroid.height;
+        }
+        if (this.position.y < -settings.asteroid.height) {
+            this.position.y = this.canvas.height + settings.asteroid.height;
+        }
+        if (this.position.x > this.canvas.width + settings.asteroid.width) {
+            this.position.x = -settings.asteroid.width;
+        }
+        if (this.position.x < -settings.asteroid.width) {
+            this.position.x = this.canvas.width + settings.asteroid.width;
+        }
     }
 
 }
