@@ -1,10 +1,11 @@
 import {Shape} from "./Shape";
 import {IColor} from "../types/IColor";
 import {IPosition} from "../types/IPosition";
+import {IRectangle} from "../types/IRectangle";
 
-export class Triangle extends Shape {
-    protected width: number;
-    protected height: number;
+export class Triangle extends Shape implements IRectangle{
+    public width: number;
+    public height: number;
 
     constructor(ctx: CanvasRenderingContext2D, position: IPosition, width: number, height: number, color: IColor, degree:number = 0, isFilled: boolean = false) {
         super(ctx, position, color, degree, isFilled);

@@ -4,6 +4,7 @@ import {IAnimatable} from "../../framework/types/IAnimatable";
 import {KeyController} from "../KeyController";
 import {Vector} from "../../framework/Vector";
 import {Bullet} from "./Bullet";
+import {Collision} from "../../framework/helpers/Collision";
 
 export class Ship extends Triangle implements IAnimatable {
     private readonly canvas: HTMLCanvasElement;
@@ -36,9 +37,9 @@ export class Ship extends Triangle implements IAnimatable {
 
     update(): void {
         this.handleKey();
+        Collision.checkEdges(this,this.canvas)
         this.speed.multiply(settings.ship.friction);
         (this.position as Vector).add(this.speed);
-        this.checkEdges();
         this.bullets.forEach((bullet) => {
             bullet.update();
         })
@@ -82,20 +83,5 @@ export class Ship extends Triangle implements IAnimatable {
                     break;
             }
         });
-    }
-
-    private checkEdges() {
-        if (this.position.y > this.canvas.height + settings.ship.height) {
-            this.position.y = -settings.ship.height;
-        }
-        if (this.position.y < -settings.ship.height) {
-            this.position.y = this.canvas.height + settings.ship.height;
-        }
-        if (this.position.x > this.canvas.width + settings.ship.width) {
-            this.position.x = -settings.ship.width;
-        }
-        if (this.position.x < -settings.ship.width) {
-            this.position.x = this.canvas.width + settings.ship.width;
-        }
     }
 }
