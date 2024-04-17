@@ -19,7 +19,7 @@ export class Circle extends Shape {
     clear() {
         this.ctx.save();
         this.ctx.translate(this.position.x, this.position.y);
-        this.ctx.rotate(this.degree);
+        this.ctx.rotate(this.orientation);
 
         if (this.isFilled) {
             this.ctx.clearRect(-this.radius - 1, -this.radius - 1, this.radius * 2 + 2, this.radius * 2 + 2);

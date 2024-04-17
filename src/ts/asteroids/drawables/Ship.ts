@@ -29,7 +29,7 @@ export class Ship extends Triangle implements IAnimatable {
         this.bulletCounter = 0;
         this.canvas = canvas;
         this.keyController = keyController;
-        this.degree = 0;
+        this.orientation = 0;
         this.speed = new Vector({x: 0, y: 0});
         this.draw();
     }
@@ -62,13 +62,13 @@ export class Ship extends Triangle implements IAnimatable {
         this.keyController.activeKeys.forEach((key) => {
             switch (key) {
                 case settings.keys[0]:
-                    this.speed.add(Vector.fromAngle(this.degree, settings.ship.speed));
+                    this.speed.add(Vector.fromAngle(this.orientation, settings.ship.speed));
                     break;
                 case settings.keys[1]:
-                    this.degree += settings.ship.rightRotation;
+                    this.orientation += settings.ship.rightRotation;
                     break;
                 case settings.keys[2]:
-                    this.degree += settings.ship.leftRotation;
+                    this.orientation += settings.ship.leftRotation;
                     break;
                 case settings.keys[3]:
                     this.speed.multiply(settings.ship.friction);
@@ -77,7 +77,7 @@ export class Ship extends Triangle implements IAnimatable {
                     this.bulletCounter++;
                     if (this.bulletCounter > settings.ship.bulletIntervall) {
                         this.bulletCounter = 0
-                        this.bullets.push(new Bullet(this.ctx, this.position, this.degree, this.speed));
+                        this.bullets.push(new Bullet(this.ctx, this.position, this.orientation, this.speed));
                     }
                     break;
             }

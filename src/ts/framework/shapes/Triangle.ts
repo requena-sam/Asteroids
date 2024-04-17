@@ -15,7 +15,7 @@ export class Triangle extends Shape {
     draw() {
         this.ctx.save();
         this.ctx.translate(this.position.x, this.position.y);
-        this.ctx.rotate(this.degree);
+        this.ctx.rotate(this.orientation);
 
         this.ctx.beginPath();
         this.ctx.moveTo(0, -this.height / 2);
@@ -31,7 +31,7 @@ export class Triangle extends Shape {
         this.ctx.save();
 
         this.ctx.translate(this.position.x, this.position.y);
-        this.ctx.rotate(this.degree);
+        this.ctx.rotate(this.orientation);
 
         if (this.isFilled) {
             this.ctx.clearRect(- this.width / 2, - this.height / 2, this.width, this.height);

@@ -16,7 +16,7 @@ export class Bullet extends Circle implements IAnimatable {
     }
 
     update() {
-        this.speed.add(Vector.fromAngle(this.degree, settings.bullet.speed));
+        this.speed.add(Vector.fromAngle(this.orientation, settings.bullet.speed));
         (this.position as Vector).add(this.speed);
     }
 }

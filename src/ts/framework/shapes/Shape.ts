@@ -5,14 +5,14 @@ export abstract class Shape implements IColor {
     protected readonly ctx: CanvasRenderingContext2D;
     public readonly position: IPosition;
     protected color: IColor;
-    public degree: number;
+    public orientation: number;
     protected isFilled: boolean;
 
     protected constructor(ctx: CanvasRenderingContext2D, position: IPosition,  color: IColor, degree:number = 0, isFilled:boolean = true) {
         this.ctx = ctx;
         this.position = position;
         this.color = color;
-        this.degree = degree;
+        this.orientation = degree;
         this.isFilled = isFilled;
     }
 
