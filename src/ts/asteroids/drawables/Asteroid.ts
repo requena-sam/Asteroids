@@ -74,7 +74,9 @@ export class Asteroid extends Rectangle implements IAnimatable {
             if (this.ctx.isPointInPath(this.path, bullet.position.x, bullet.position.y)) {
                 this.shouldBeRemoved = true
                 if (!this.parent) {
-                    this.animation.registerForAnimation(new Asteroid(this.ctx, this.canvas, this.ship, this.animation, this))
+                    for (let i = 0; i < settings.asteroid.newAsteroidCount; i++) {
+                        this.animation.registerForAnimation(new Asteroid(this.ctx, this.canvas, this.ship, this.animation, this))
+                    }
                 }
             }
         })

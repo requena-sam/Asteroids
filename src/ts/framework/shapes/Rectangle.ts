@@ -4,8 +4,8 @@ import {IPosition} from "../types/IPosition";
 import {IRectangle} from "../types/IRectangle";
 
 export class Rectangle extends Shape implements IRectangle {
-    public readonly width: number;
-    public readonly height: number;
+    public width: number;
+    public height: number;
 
     constructor(ctx: CanvasRenderingContext2D, position: IPosition, width: number, height: number, color: IColor, degree: number = 0, isFilled: boolean = true) {
         super(ctx, position, color, degree, isFilled);

@@ -55,7 +55,16 @@ export const settings = {
         minAcceleration: 2,
         maxAcceleration: 5,
         orientationSpeed: 0.01,
+        newAsteroidCount: 3,
 
 
+    },
+    star: {
+        width: {
+            min: 2,
+            max: 5,
+        },
+        color: Rgb.white,
+        initialCount : 30
     }
 }

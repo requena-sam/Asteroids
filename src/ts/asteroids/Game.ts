@@ -3,6 +3,7 @@ import {Ship} from "./drawables/Ship";
 import {Animate} from "../framework/Animate";
 import {KeyController} from "./KeyController";
 import {Asteroid} from "./drawables/Asteroid";
+import {Star} from "./drawables/Star";
 
 export class Game {
     private readonly gameCanvas: HTMLCanvasElement;
@@ -23,6 +24,11 @@ export class Game {
         this.resizeCanvas();
 
         this.keyController = new KeyController();
+
+        //Dessin des étoiles
+        for (let i = 0; i < settings.star.initialCount; i++) {
+            new Star(this.backgroundCanvas , this.backgroundCtx).draw();
+        }
 
         this.ship = new Ship(this.gameCanvas, this.gameCtx, this.keyController);
         this.animation = new Animate(this.gameCanvas, this.gameCtx);
