@@ -8,15 +8,21 @@ import {settings} from "../settings";
 export class Bullet extends Circle implements IAnimatable {
     private readonly canvas: HTMLCanvasElement;
     private readonly speed: Vector;
+    shouldBeRemoved: boolean;
+
 
     constructor(ctx: CanvasRenderingContext2D, position: IPosition, degree: number, speed: Vector) {
         super(ctx, new Vector(position), settings.bullet.radius, settings.bullet.color, degree);
         this.speed = new Vector(speed);
         this.update()
+        this.shouldBeRemoved = false
+
     }
 
     update() {
+        //Quand il sort du Canvas il faut ajouter ShouldbeRemover à true :todo
         this.speed.add(Vector.fromAngle(this.orientation, settings.bullet.speed));
         (this.position as Vector).add(this.speed);
     }
+
 }

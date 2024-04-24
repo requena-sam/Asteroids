@@ -12,6 +12,8 @@ export class Ship extends Triangle implements IAnimatable {
     private readonly speed: Vector;
     public bullets: Bullet[];
     private bulletCounter: number;
+    shouldBeRemoved: boolean;
+
 
     constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, keyController: KeyController) {
         super(
@@ -33,11 +35,12 @@ export class Ship extends Triangle implements IAnimatable {
         this.orientation = 0;
         this.speed = new Vector({x: 0, y: 0});
         this.draw();
+        this.shouldBeRemoved = false
     }
 
     update(): void {
         this.handleKey();
-        Collision.checkEdges(this,this.canvas)
+        Collision.checkEdges(this, this.canvas)
         this.speed.multiply(settings.ship.friction);
         (this.position as Vector).add(this.speed);
         this.bullets.forEach((bullet) => {
@@ -84,4 +87,5 @@ export class Ship extends Triangle implements IAnimatable {
             }
         });
     }
+
 }
